@@ -317,9 +317,6 @@
     "symfony/options-resolver": {
         "version": "v4.0.4"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.5"
-    },
     "symfony/phpunit-bridge": {
         "version": "3.3",
         "recipe": {
@@ -340,9 +337,6 @@
     },
     "symfony/process": {
         "version": "v4.0.2"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.3"
     },
     "symfony/routing": {
         "version": "4.0",
@@ -403,6 +397,18 @@
     },
     "symfony/yaml": {
         "version": "v4.0.2"
+    },
+    "twig/extensions": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "a86723ee8d8b2f9437c8ce60a5546a1c267da5ed"
+        },
+        "files": [
+            "config/packages/twig_extensions.yaml"
+        ]
     },
     "twig/twig": {
         "version": "v2.4.4"
