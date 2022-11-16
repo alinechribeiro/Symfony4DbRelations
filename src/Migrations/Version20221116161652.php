@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221115113538 extends AbstractMigration
+final class Version20221116161652 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -23,9 +23,7 @@ final class Version20221115113538 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE article CHANGE published_at published_at DATETIME DEFAULT NULL, CHANGE image_filename image_filename VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE comment ADD article_id INT NOT NULL');
-        $this->addSql('ALTER TABLE comment ADD CONSTRAINT FK_9474526C7294869C FOREIGN KEY (article_id) REFERENCES article (id)');
-        $this->addSql('CREATE INDEX IDX_9474526C7294869C ON comment (article_id)');
+        $this->addSql('ALTER TABLE article_tag ADD CONSTRAINT FK_919694F9BAD26311 FOREIGN KEY (tag_id) REFERENCES tag (id) ON DELETE CASCADE');
     }
 
     public function down(Schema $schema) : void
@@ -34,8 +32,6 @@ final class Version20221115113538 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('ALTER TABLE article CHANGE published_at published_at DATETIME DEFAULT \'NULL\', CHANGE image_filename image_filename VARCHAR(255) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
-        $this->addSql('ALTER TABLE comment DROP FOREIGN KEY FK_9474526C7294869C');
-        $this->addSql('DROP INDEX IDX_9474526C7294869C ON comment');
-        $this->addSql('ALTER TABLE comment DROP article_id');
+        $this->addSql('ALTER TABLE article_tag DROP FOREIGN KEY FK_919694F9BAD26311');
     }
 }
